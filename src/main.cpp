@@ -1,8 +1,11 @@
 #include "downloader.h"
 
+#include <filesystem>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+
+namespace fs = std::filesystem;
 
 void showProgressBar(double percentage) {
   const int barWidth = 50;
@@ -36,7 +39,13 @@ int main() {
                     o_text + ".pkg/pdf.pdf";
   std::cout << url << std::endl;
 
-  std::string downloadPath = "output.pdf";
+  std::string downloadDir = "../download";
+  std::string downloadPath = downloadDir + "/output.pdf";
+
+  // 创建下载目录
+  if (!fs::exists(downloadDir)) {
+    fs::create_directories(downloadDir);
+  }
 
   Downloader downloader;
   downloader.download(url, downloadPath, [](double total, double downloaded) {
