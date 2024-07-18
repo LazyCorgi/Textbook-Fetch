@@ -27,7 +27,7 @@ void showProgressBar(double percentage) {
 int main() {
   std::string i_text, o_text;
 
-  printf("在此输入书籍链接：▽\n");
+  printf("在此输入书籍链接（来源：https://basic.smartedu.cn/tchMaterial）▽\n");
   std::cin >> i_text;
   std::string bookname;
   printf("书籍名：");

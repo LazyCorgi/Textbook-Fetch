@@ -21,4 +21,6 @@
 最后成功运行图像如下（书籍名称需自己填写，用于生成文件的命名）：
 ![运行截图](pic/pic1.png "pic1")
 
+教材来源网页：https://basic.smartedu.cn/tchMaterial
+
 下载成功后文件将位于项目目录下download/xxx.pdf
