@@ -1,9 +1,11 @@
 #include "downloader.h"
 
+#include <ctime>
 #include <filesystem>
 #include <iomanip>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 namespace fs = std::filesystem;
 
@@ -24,9 +26,13 @@ void showProgressBar(double percentage) {
 
 int main() {
   std::string i_text, o_text;
-  i_text = "https://basic.smartedu.cn/tchMaterial/"
-           "detail?contentType=assets_document&contentId=c71014f5-3bf1-47e2-"
-           "b9db-d70b79f2b33d&catalogType=tchMaterial&subCatalog=tchMaterial";
+
+  printf("在此输入书籍链接：▽\n");
+  std::cin >> i_text;
+  std::string bookname;
+  printf("书籍名：");
+  std::cin >> bookname;
+
   std::string::size_type pos1 = i_text.find("contentId="),
                          pos2 = i_text.find("&catalogType=");
   if (pos1 != std::string::npos) {
@@ -40,8 +46,7 @@ int main() {
   std::cout << url << std::endl;
 
   std::string downloadDir = "../download";
-  std::string downloadPath = downloadDir + "/output.pdf";
-
+  std::string downloadPath = downloadDir + "/" + bookname + ".pdf";
   // 创建下载目录
   if (!fs::exists(downloadDir)) {
     fs::create_directories(downloadDir);
